@@ -19,10 +19,10 @@ Square* generateSquare(int minSize, int maxSize, int windowWidth, int windowHeig
     int dirX = std::rand() % (windowWidth - size);
     int dirY = std::rand() % (windowHeight - size);
     Vector2 direction = {(float)dirX, (float)dirY};
-
+    direction = {1.0, 1.0};
     Color color = colors[std::rand() % sizeof(colors)/sizeof(Color)];
 
-    Square* square = new Square(size, position, color);
+    Square* square = new Square(size, position, direction, color);
     return square;
 }
 
@@ -50,6 +50,7 @@ int main(int argc, char **argv) {
 
         for (auto p : squaresList) {
             p->draw();
+            p->move(windowWidth, windowHeight);
         }
         EndDrawing();
     }
